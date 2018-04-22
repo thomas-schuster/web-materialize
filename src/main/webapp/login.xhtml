@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./templates/materialtemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="top">
+
+    </ui:define>
+
+    <ui:define name="content">
+
+        <!--All div elements are styled with materialize css, somer containerization is done here, as demonstrated in materialize show case.-->
+        <div class="valign-wrapper" id="login">
+            <div class="container">
+                <div class="center-align">
+                    <div class="row offset-s3">
+                        <div class="col s6 offset-s3">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img class="responsive-img" src="https://cagataycivici.files.wordpress.com/2011/05/logo.png" />
+
+                                    <h:form id="loginForm">
+                                        <div class="row s12 m6 input-field">
+                                            <h:inputText id="username" required="true" requiredMessage="User name is missing" />
+                                            <h:outputLabel for="username" value ="User Name"/>
+
+                                        </div>  
+                                        <div class="row s12 m6 input-field">
+                                            <h:inputText id="password" required="true" requiredMessage="Password is missing" />
+                                            <h:outputLabel for="password" value ="Password"/>
+                                        </div>
+                                        <div class="row s12 m6 input-field">
+                                            <h:commandLink value="Login" styleClass="btn btn-large" action="#{loginBean.authenticate()}"><i class="material-icons right">send</i></h:commandLink>
+                                        </div>                                       
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+    <ui:define name="bottom">
+
+        <div class="valign-wrapper" id="register">
+            <div class="container">
+                <div class="center-align">
+                    <div class="row">
+                        <div class="col s6 offset-s3">
+                            <h:form id="registerForm">
+                                <div class="row">
+                                    <h:outputText value="Don't have an account? "/><h:commandLink value="Sign Up" styleClass="waves-effect btn btn-small"/>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>
