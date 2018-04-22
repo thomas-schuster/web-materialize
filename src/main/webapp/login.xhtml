@@ -10,6 +10,7 @@
     </ui:define>
 
     <ui:define name="content">
+        <p:growl autoUpdate="true" sticky="false" life="10000"/>
 
         <!--All div elements are styled with materialize css, somer containerization is done here, as demonstrated in materialize show case.-->
         <div class="valign-wrapper" id="login">
@@ -20,15 +21,13 @@
                             <div class="card">
                                 <div class="card-content">
                                     <img class="responsive-img" src="https://cagataycivici.files.wordpress.com/2011/05/logo.png" />
-
                                     <h:form id="loginForm">
                                         <div class="row s12 m6 input-field">
-                                            <h:inputText id="username" required="true" requiredMessage="User name is missing" />
+                                            <h:inputText id="username" required="true" requiredMessage="User name is missing" value="#{loginBean.userName}"/>
                                             <h:outputLabel for="username" value ="User Name"/>
-
                                         </div>  
                                         <div class="row s12 m6 input-field">
-                                            <h:inputText id="password" required="true" requiredMessage="Password is missing" />
+                                            <p:password id="password" required="true" requiredMessage="Password is missing" value="#{loginBean.password}"/>
                                             <h:outputLabel for="password" value ="Password"/>
                                         </div>
                                         <div class="row s12 m6 input-field">
