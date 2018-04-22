@@ -53,10 +53,10 @@ public class LoginBean implements Serializable {
         this.password = password;
     }
 
-    private boolean isLoggedIn() {
+    public boolean isLoggedIn() {
         return loggedIn;
     }
-
+    
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
