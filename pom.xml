@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.hspf.sysdev</groupId>
-    <artifactId>web-materialiaze</artifactId>
+    <artifactId>web-materialize</artifactId>
     <version>0.42</version>
     <packaging>war</packaging>
 
-    <name>web-materialiaze</name>
+    <name>web-materialize</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
