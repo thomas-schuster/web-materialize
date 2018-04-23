@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    
+    <nav class="light-blue">
+        <div class="nav-wrapper">
+            <h:form id="navBar">
+                <a href="#" class="brand-logo">
+                    <img style="height: 64px;" src="https://www.hs-pforzheim.de/typo3conf/ext/wr_hspfo/Resources/Public/Images/HS_PF_Logo_Grau.svg" />
+                </a>
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="http://materializecss.com/">Materialize CSS</a></li>
+                    <li><a href="https://javaee.github.io/javaserverfaces-spec/">Java ServerFaces</a></li>
+                    <li><a href="https://www.primefaces.org/showcase/">PrimeFaces ShowCase</a></li>
+                    <li>
+                        <h:commandLink rendered="#{loginBean.loggedIn}" action="login" class="waves-effect waves-light btn blue-grey lighten-3">
+                            <i class="material-icons left">person</i><h:outputText value="#{loginBean.userName}"/>
+                        </h:commandLink>
+                    </li>
+                    <li>
+                        <h:commandLink rendered="#{!loginBean.loggedIn}" action="login" class="waves-effect waves-light btn blue-grey lighten-3">
+                            <i class="material-icons left">person_outline</i><h:outputText value="#{MSG.LOGIN}"/>
+                        </h:commandLink>
+                    </li>
+                </ul>
+            </h:form>
+        </div>
+    </nav>
+    
+</ui:composition>
