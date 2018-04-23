@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Hello Materialize Design</title>
+        <title>#{MSG.INDEXPAGETITLE}</title>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
         <!-- Compiled and minified CSS -->
@@ -34,7 +34,7 @@
                     </li>
                     <li>
                         <h:commandLink rendered="#{!loginBean.loggedIn}" action="login" class="waves-effect waves-light btn blue-grey lighten-3">
-                            <i class="material-icons left">person_outline</i>Login
+                            <i class="material-icons left">person_outline</i><h:outputText value="#{MSG.LOGIN}"/>
                         </h:commandLink>
                     </li>
                 </ul>
