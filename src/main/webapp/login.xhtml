@@ -29,11 +29,13 @@
                                             <h:outputLabel for="username" value ="#{MSG.USERNAME}"/>
                                         </div>  
                                         <div class="row s12 m6 input-field">
-                                            <p:password id="password" required="true" requiredMessage="#{MSG.PASSWORDERROR}" value="#{loginBean.password}"/>
+                                            <p:password id="password" required="true" requiredMessage="#{MSG.PASSWORDERROR}" 
+                                                        value="#{loginBean.password}"/>
                                             <h:outputLabel for="password" value ="#{MSG.PASSWORD}"/>
                                         </div>
                                         <div class="row s12 m6 input-field">
-                                            <h:commandLink value="#{MSG.SIGNIN}" styleClass="btn btn-large blue-grey lighten-3" action="#{loginBean.authenticate()}"><i class="material-icons right">send</i></h:commandLink>
+                                            <h:commandLink value="#{MSG.SIGNIN}" styleClass="btn btn-large blue-grey lighten-3" 
+                                                           action="#{loginBean.authenticate()}"><i class="material-icons right">send</i></h:commandLink>
                                         </div>                                       
                                     </h:form>
                                 </div>

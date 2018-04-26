@@ -25,13 +25,10 @@ public class LoginBean implements Serializable {
     public String authenticate() {
         //TODO add real authentication mechanism
         if (getUserName().equals("thomas")) {
-            ViewContextUtil.getSession().setAttribute("user", getUserName());
             setLoggedIn(true);
-            ViewContextUtil.getSession().setAttribute("loggedIn", isLoggedIn());
             ViewContextUtil.getFacesContext().addMessage(null, new FacesMessage("Login sucessfull."));
             return "index";
         } else {
-            ViewContextUtil.getSession().setAttribute("loggedIn", isLoggedIn());
             ViewContextUtil.getFacesContext().addMessage(null, new FacesMessage("Login failed, either username or password are wrong. You provided:" + getUserName()));
             return "login";
         }
@@ -56,7 +53,7 @@ public class LoginBean implements Serializable {
     public boolean isLoggedIn() {
         return loggedIn;
     }
-    
+
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
