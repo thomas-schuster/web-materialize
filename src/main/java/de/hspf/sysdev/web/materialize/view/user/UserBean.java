@@ -1,61 +1,64 @@
 package de.hspf.sysdev.web.materialize.view.user;
 
-import de.hspf.sysdev.web.materialize.view.util.ViewContextUtil;
+import de.hspf.sysdev.web.materialize.model.Task;
+import de.hspf.sysdev.web.materialize.model.User;
+import de.hspf.sysdev.web.materialize.view.util.CreatorUtil;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
  * @author thomas
  */
-@Named(value = "loginBean")
+@Named(value = "userBean")
 @SessionScoped
-public class LoginBean implements Serializable {
+public class UserBean implements Serializable {
 
-    private boolean loggedIn;
-    private String userName;
-    private String password;
-
-    public LoginBean() {
-        setLoggedIn(false);
+    private User user;
+    @Inject
+    private CreatorUtil util;
+   
+    public UserBean() {
+    }
+    
+    public User getUser() {
+        return user;
     }
 
-    public String authenticate() {
-        //TODO add real authentication mechanism
-        if (getUserName().equals("thomas")) {
-            setLoggedIn(true);
-            ViewContextUtil.getFacesContext().addMessage(null, new FacesMessage("Login sucessfull."));
-            return "index";
-        } else {
-            ViewContextUtil.getFacesContext().addMessage(null, new FacesMessage("Login failed, either username or password are wrong. You provided:" + getUserName()));
-            return "login";
-        }
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getUserName() {
-        return userName;
+        return user.getUserName();
+    }
+    
+    public Collection<Task> getUserTasks() {
+        return user.getTaskList();
+    }
+    
+    public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Task Edited", ((Task) event.getObject()).getTaskId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Task) event.getObject()).getTaskId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
-
-    public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
+    public void onAddNew() {
+        // Add one new task to the table
+        Task task2Add = util.createTask("id2", "test", Task.TaskType.Task, 1);
+        getUserTasks().add(task2Add);
+        FacesMessage msg = new FacesMessage("New Task added", task2Add.getTaskId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
 }

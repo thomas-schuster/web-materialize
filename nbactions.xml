@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
         <action>
-            <actionName>CUSTOM-AusfÃ¼hren ohne Test</actionName>
-            <displayName>AusfÃ¼hren ohne Test</displayName>
-            <goals>
-                <goal>clean:clean</goal>
-                <goal>install:install</goal>
-                <goal>deploy:deploy</goal>
-            </goals>
-            <properties>
-                <skipTests>true</skipTests>
-            </properties>
-        </action>
-        <action>
             <actionName>run</actionName>
             <packagings>
                 <packaging>war</packaging>
@@ -27,4 +15,56 @@
                 <skipTests>true</skipTests>
             </properties>
         </action>
+        <action>
+            <actionName>rebuild</actionName>
+            <packagings>
+                <packaging>*</packaging>
+                
+                
+            </packagings>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+            <properties>
+                
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+        <action>
+            <actionName>test</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>package</goal>
+                <goal>test</goal>
+            </goals>
+            <properties>
+                <netbeans.deploy>true</netbeans.deploy>
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Clean run, no tests</actionName>
+            <displayName>Clean run, no tests</displayName>
+            <goals>
+                <goal>clean:clean</goal>
+                <goal>install:install</goal>
+                <goal>deploy:deploy</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Integration Test</actionName>
+            <displayName>Integration Test</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>integration-test</goal>
+            </goals>
+        </action>
+        
     </actions>

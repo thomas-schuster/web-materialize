@@ -11,6 +11,9 @@ body {
 
 main {
     flex: 1 0 auto;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .card-image{
@@ -19,13 +22,13 @@ main {
 }
 
 h1 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    font-family: Verdana, "Verdana CE", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     border-bottom: 1px solid #AFAFAF; 
-    font-size:  16px;
+    font-size:  13px;
     font-weight: bold;
     margin: 0px;
     padding: 0px;
-    color: #D20005;
+    color: #68a8f1;
 }
 
 a:link, a:visited {
@@ -39,3 +42,18 @@ a:link:hover, a:visited:hover  {
     font-weight : bold;
     text-decoration : underline;
 }
+
+/*table definition*/
+.ui-datatable .ui-state-default{
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+    color: #ffffff;
+    background: #039be5; 
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: Verdana, "Verdana CE", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+}
+
