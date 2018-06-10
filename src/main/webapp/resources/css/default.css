@@ -43,6 +43,11 @@ a:link:hover, a:visited:hover  {
     text-decoration : underline;
 }
 
+.ui-state-default {
+    background-color: transparent;
+    border: none;
+}
+
 /*table definition*/
 .ui-datatable .ui-state-default{
     display: table-cell;
@@ -54,6 +59,52 @@ a:link:hover, a:visited:hover  {
     font-weight: bold;
     text-decoration: none;
     font-size: 1rem;
-    font-family: Verdana, "Verdana CE", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    /*font-family: Verdana, "Verdana CE", Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;*/
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
+.ui-cell-editor-output .ui-column-title {
+    padding: 15px 5px;
+}
+
+.ui-widget {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    border: none;
+    line-height: 1.15;
+    font-size:16px;
+    font-stretch:100%;
+    font-style:normal;
+    font-variant-caps:normal;
+    font-variant-east-asian:normal;
+    font-variant-ligatures:normal;
+    font-variant-numeric:normal;
+    font-weight:400;
+}
+
+.ui-panelgrid {
+    border: none;
+    border-bottom: none;
+}
+
+.ui-selectonemenu {
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+    height: 3rem;
+    line-height: 3rem;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    padding: 0;
+    display: block;
+    box-shadow: none;
+}
+
+.ui-selectonemenu-trigger{
+    background-color: transparent;
+    border: none;
 }
 

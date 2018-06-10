@@ -24,6 +24,11 @@ public class DummyUserManager {
         users = util.createUserList();
     }
 
+    public boolean registerUser(User user) {
+       users.add(user);
+       return true;
+    }
+    
     public User validateUser(String username, String password) {
         Optional<User> user = users.stream().filter(u -> 
                 u.getUserName().equals(username) && 

@@ -27,6 +27,10 @@ public class UserController {
     @PostConstruct
     private void init() {
     }
+
+    public boolean registerUser(User user2register) {
+        return userManager.registerUser(user2register);
+    }
     
     public boolean validateUser(String username, String password) {
         return userManager.validateUser(username, password) != null;

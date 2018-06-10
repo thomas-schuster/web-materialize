@@ -3,7 +3,8 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/materialtemplate.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">#{MSG.LOGINPAGETITLE}</ui:define>
 
@@ -57,7 +58,7 @@
                         <div class="col s6 offset-s3">
                             <h:form id="registerForm">
                                 <div class="row">
-                                    <h:outputText value="#{MSG.MISSINGACCOUNT}"/><h:commandLink value="#{MSG.REGISTER}" styleClass="waves-effect btn btn-small blue-grey lighten-3"/>
+                                    <h:outputText value="#{MSG.MISSINGACCOUNT}"/><h:commandLink value="#{MSG.REGISTER}" action="registration" styleClass="waves-effect btn btn-small blue-grey lighten-3"/>
                                 </div>
                             </h:form>
                         </div>

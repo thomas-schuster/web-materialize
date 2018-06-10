@@ -65,6 +65,12 @@
                 <goal>clean</goal>
                 <goal>integration-test</goal>
             </goals>
+            <properties>
+                <integration-test></integration-test>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>integrationtest</activatedProfile>
+            </activatedProfiles>
         </action>
         
     </actions>

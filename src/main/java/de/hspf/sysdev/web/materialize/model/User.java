@@ -1,6 +1,6 @@
 package de.hspf.sysdev.web.materialize.model;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -13,8 +13,49 @@ public class User {
     private String userName;
     private String userDescription;
     private String password;
+    private String salutation;
+    private String name;
+    private String surName;
+    private String email;
     private Collection<Task> taskList;
 
+    public User() {
+        taskList = new ArrayList<>();
+    }
+    
+    public String getSalutation() {
+        return salutation;
+    }
+
+    public void setSalutation(String salutation) {
+        this.salutation = salutation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
     public String getUserID() {
         return userID;
     }

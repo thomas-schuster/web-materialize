@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/materialtemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">#{MSG.LOGINPAGETITLE}</ui:define>
+
+    <ui:define name="top">
+
+    </ui:define>
+
+    <ui:define name="content">
+        <p:growl autoUpdate="true" sticky="false" life="10000"/>
+
+        <!--All div elements are styled with materialize css, somer containerization is done here, as demonstrated in materialize show case.-->
+        <div class="valign-wrapper" id="login">
+            <div class="container">
+                <div class="center-align">
+                    <div class="row offset-s3">
+                        <div class="col s6 offset-s3">
+                            <div class="card">
+                                <div class="card-content">
+                                    <img class="responsive-img" src="https://cagataycivici.files.wordpress.com/2011/05/logo.png"/>
+                                    <h:form id="loginForm">
+                                        <div class="row s12 m6 input-field">
+                                            <h:panelGrid columns="2" style="margin-bottom:10px; border-bottom: none;" cellpadding="5">
+                                                <p:outputLabel for="salutation" value ="#{MSG.SALUTATION}"/>
+                                                <p:selectOneMenu id="salutation" value = "#{registrationBean.salutation}"> 
+                                                    <f:selectItem itemValue = "#{MSG.SALUTATIONVALUE1}" itemLabel = "#{MSG.SALUTATIONVALUE1}" /> 
+                                                    <f:selectItem itemValue = "#{MSG.SALUTATIONVALUE2}" itemLabel = "#{MSG.SALUTATIONVALUE2}" /> 
+                                                    <f:selectItem itemValue = "#{MSG.SALUTATIONVALUE3}" itemLabel = "#{MSG.SALUTATIONVALUE3}" /> 
+                                                    <f:selectItem itemValue = "#{MSG.SALUTATIONVALUE4}" itemLabel = "#{MSG.SALUTATIONVALUE4}" /> 
+                                                    <f:selectItem itemValue = "#{MSG.SALUTATIONVALUE5}" itemLabel = "#{MSG.SALUTATIONVALUE5}" /> 
+                                                    <f:selectItem itemValue = "#{MSG.SALUTATIONVALUE6}" itemLabel = "#{MSG.SALUTATIONVALUE6}" /> 
+                                                </p:selectOneMenu>
+                                            </h:panelGrid>
+                                        </div> 
+                                        <div class="row s12 m6 input-field">
+                                            <h:inputText id="name" required="true" requiredMessage="#{MSG.USERERROR}" value="#{registrationBean.name}"/>
+                                            <h:outputLabel for="name" value ="#{MSG.NAME}"/>
+                                        </div> 
+                                        <div class="row s12 m6 input-field">
+                                            <h:inputText id="surname" required="true" requiredMessage="#{MSG.USERERROR}" value="#{registrationBean.surName}"/>
+                                            <h:outputLabel for="surname" value ="#{MSG.SURNAME}"/>
+                                        </div> 
+                                        <div class="row s12 m6 input-field">
+                                            <h:inputText id="email" required="true" requiredMessage="#{MSG.USERERROR}" value="#{registrationBean.email}">
+                                                <f:validator validatorId="emailValidator"/>
+                                            </h:inputText>
+                                            <h:outputLabel for="email" value ="#{MSG.EMAIL}"/>
+                                        </div> 
+                                        <div class="row s12 m6 input-field">
+                                            <h:inputText id="username" required="true" requiredMessage="#{MSG.USERERROR}" value="#{registrationBean.username}"/>
+                                            <h:outputLabel for="username" value ="#{MSG.USERNAME}"/>
+                                        </div>  
+                                        <div class="row s12 m6 input-field">
+                                            <p:password id="password" required="true" requiredMessage="#{MSG.PASSWORDERROR}" 
+                                                        value="#{registrationBean.password}"/>
+                                            <h:outputLabel for="password" value ="#{MSG.PASSWORD}"/>
+                                        </div>
+                                        <div class="row s12 m6 input-field">
+                                            <p:password id="repeatedpassword" required="true" requiredMessage="#{MSG.PASSWORDERROR}" 
+                                                        value="#{registrationBean.repeatedpassword}"/>
+                                            <h:outputLabel for="repeatedpassword" value ="#{MSG.REPEATEDPASSWORD}"/>
+                                        </div>
+                                        <div class="row s12 m6 input-field">
+                                            <h:commandLink value="#{MSG.REGISTER}" styleClass="btn btn-large blue-grey lighten-3" 
+                                                           action="#{registrationBean.register()}"><i class="material-icons right">send</i></h:commandLink>
+                                        </div>                                       
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+    <ui:define name="bottom">
+
+    </ui:define>
+
+</ui:composition>
+
