@@ -13,7 +13,7 @@
                 </pattern>>
             </PatternLayout>
         </Console>
-        <File name="File-Appender" fileName="${log-path}/easyflow.log" >
+        <File name="File-Appender" fileName="${log-path}/material.log" >
             <PatternLayout>
                 <pattern>
                     [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n

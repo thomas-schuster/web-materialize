@@ -13,6 +13,8 @@
             <properties>
                 <netbeans.deploy>true</netbeans.deploy>
                 <skipTests>true</skipTests>
+                <skip.surefire.tests></skip.surefire.tests>
+                
             </properties>
         </action>
         <action>
@@ -29,6 +31,8 @@
             <properties>
                 
                 <skipTests>true</skipTests>
+                
+                <skip.surefire.tests></skip.surefire.tests>
             </properties>
         </action>
         <action>
