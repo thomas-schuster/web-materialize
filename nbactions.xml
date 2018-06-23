@@ -32,7 +32,9 @@
                 
                 <skipTests>true</skipTests>
                 
-                <skip.surefire.tests></skip.surefire.tests>
+                <skip.surefire.tests>true</skip.surefire.tests>
+                
+                <cargo.maven.skip>true</cargo.maven.skip>
             </properties>
         </action>
         <action>
@@ -75,6 +77,35 @@
             <activatedProfiles>
                 <activatedProfile>integrationtest</activatedProfile>
             </activatedProfiles>
+        </action>
+        <action>
+            <actionName>build-with-dependencies</actionName>
+            <reactor>also-make</reactor>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>install</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+                <skip.surefire.tests>true</skip.surefire.tests>
+                <cargo.maven.skip>true</cargo.maven.skip>
+            </properties>
+        </action>
+        <action>
+            <actionName>build</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>install</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+                <skip.surefire.tests>true</skip.surefire.tests>
+                <cargo.maven.skip>true</cargo.maven.skip>
+            </properties>
         </action>
         
     </actions>

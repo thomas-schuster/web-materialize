@@ -50,6 +50,7 @@ public class LoginRestValidationIT {
         logger.info("try to call REST service");
 
         Collection<User> result = client.getUsersResponse("usercontroller/getuserlist");
+        logger.info("web service response is: " + result);
         Assert.assertThat(result, hasSize(greaterThan(0)));
     }
 }

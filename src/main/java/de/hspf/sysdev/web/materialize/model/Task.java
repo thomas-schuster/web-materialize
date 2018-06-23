@@ -1,15 +1,21 @@
 package de.hspf.sysdev.web.materialize.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author thomas.schuster
  */
-
+@Entity
 public class Task {
 
-    private String taskId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long taskId;
     private String taskName;
     private Date dueDate;
     private TaskType type;
@@ -18,11 +24,11 @@ public class Task {
         Epic, UserStory, SubTask, Task
     }
 
-    public String getTaskId() {
+    public Long getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(String taskId) {
+    public void setTaskId(Long taskId) {
         this.taskId = taskId;
     }
 

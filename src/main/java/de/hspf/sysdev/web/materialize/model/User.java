@@ -2,14 +2,30 @@ package de.hspf.sysdev.web.materialize.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author thomas.schuster
  */
+@Entity
+@NamedQueries({
+    @NamedQuery(name="User.findByName", query="SELECT u FROM User u WHERE u.userName = :name"),
+})
+@Table(name = "MaterialUser")
 public class User {
 
-    private String userID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userID;
     private String userName;
     private String userDescription;
     private String password;
@@ -17,6 +33,8 @@ public class User {
     private String name;
     private String surName;
     private String email;
+    
+    @OneToMany(cascade={CascadeType.ALL})
     private Collection<Task> taskList;
 
     public User() {
@@ -56,11 +74,11 @@ public class User {
     }
 
     
-    public String getUserID() {
+    public Long getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(Long userID) {
         this.userID = userID;
     }
 
