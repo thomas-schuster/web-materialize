@@ -19,6 +19,11 @@ The project is configured to be built and deployed by means of common maven goal
 
 1. In order to enable a quick build and installation, tests may be skipped during **clean**, **install** and **package** commands. 
 2. The project is ready to be executed on [Payara 182](https://www.payara.fish/)
+3. You will also need to install the basic theme which is included as *basetheme.jar*. You simply have to installg it to your maven repository. Todo so, just cd to your project folder and then execute the following command on your commandline:
+```console
+foo@bar:~$ mvn install:install-file -Dfile=basetheme.jar -DgroupId=de.hspf.sysdev \ 
+           -DartifactId=basetheme -Dversion=1.0 -Dpackaging=jar 
+```
 
 ## Execution of Integration Tests
 Two profiles are prepared in order to execute the integration tests. One profile does execute all tests against a remote payara server, the other profile executes all tests against wildfly. The second profile will utilize maven to download and fire up wildfly as test environment.
@@ -39,6 +44,6 @@ Keep in mind that you need to have payara up and running. In addition payara con
 ```
 feel free to change this configuration or alter your payara configuration to match to it. If you intend to test on wildfly, you may call instead
 ```console
-mvn verify -Dskip.surefire.tests -P wildflytest 
+foo@bar:~$ mvn verify -Dskip.surefire.tests -P wildflytest 
 ```
 
