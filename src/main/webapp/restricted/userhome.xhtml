@@ -18,53 +18,83 @@
             <div class="row">
                 <div class="col s1 l1"><!--just some spacing--></div>
                 <div class="col s10 l10">
-                    <p:growl id="msgs" showDetail="true"/>
+                    <p:growl id="msgs" showDetail="true"><p:autoUpdate/></p:growl> 
 
                     <h1><h:outputText value="#{userBean.userName}" /> DashBoard</h1>
 
-                    <p:dataTable id="tasks" widgetVar="tasks" var="task" value="#{userBean.userTasks}" styleClass="striped">
-
+                    <p:dataTable id="tasks" widgetVar="tasks" var="task" value="#{userBean.userTasks}" rowHover="true" tableStyleClass="striped">
+                        <p:autoUpdate/>
                         <p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" update=":form:msgs" />
                         <p:ajax event="rowEditCancel" listener="#{userBean.onRowCancel}" update=":form:msgs" />
 
-                        <p:column headerText="Id" sortBy="#{task.taskId}">
+                        <p:column headerText="Id" sortBy="#{task.taskId}" style="border-bottom: 1px solid #ddd; padding-top: 1em;padding-bottom: 1em;">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{task.taskId}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="modelInput" value="#{task.taskId}" style="width:100%"/></f:facet>
                             </p:cellEditor>
                         </p:column>
 
-                        <p:column headerText="Name" sortBy="#{task.taskName}">
+                        <p:column headerText="Name" sortBy="#{task.taskName}" style="border-bottom: 1px solid #ddd;">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{task.taskName}" /></f:facet>
                                 <f:facet name="input"><p:inputText value="#{task.taskName}" style="width:100%" label="Name"/></f:facet>
                             </p:cellEditor>
                         </p:column>
-                        <p:column headerText="Task Type" sortBy="#{task.type}">
+                        <p:column headerText="Task Type" sortBy="#{task.type}" style="border-bottom: 1px solid #ddd;">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{task.type}" /></f:facet>
                                 <f:facet name="input"><p:inputText value="#{task.type}" style="width:100%" label="Due Date"/></f:facet>
                             </p:cellEditor>
                         </p:column>
-                        <p:column headerText="Due Date" sortBy="#{task.dueDate}">
+                        <p:column headerText="Due Date" sortBy="#{task.dueDate}" style="border-bottom: 1px solid #ddd;">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{task.dueDate}" /></f:facet>
                                 <f:facet name="input"><p:inputText value="#{task.dueDate}" style="width:100%" label="Due Date"/></f:facet>
                             </p:cellEditor>
                         </p:column>
 
-                        <p:column style="width:32px">
+                        <p:column style="width:32px; border-bottom: 1px solid #ddd;">
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
 
-                    <h:commandLink actionListener="#{userBean.onAddNew()}" class="waves-effect waves-light btn blue-grey lighten-3">
+                    <br/>
+
+                    <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="newtask" class="waves-effect waves-light btn blue-grey lighten-3">
                         <i class="material-icons left">add</i><h:outputText value="#{MSG.ADDROW}"/>
-                    </h:commandLink>
+                    </h:outputLink>
+
+                    <p:dialog header="Add task" widgetVar="dlg" resizable="false" showEffect="clip" hideEffect="clip">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="taskname" value="Task name:" />
+                            <p:inputText id="taskname" value="#{userBean.newTaskName}" required="true" label="username" />
+
+                            <p:outputLabel for="newtasktype" value="Grouping: " />
+                            <p:selectOneMenu id="newtasktype" value="#{userBean.newTaskType}" styleClass="select-dropdown, dropdown-trigger">
+                                <f:selectItems value="#{userBean.types}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel for="popup" value="Due date:" />
+                            <p:calendar id="popup" value="#{userBean.newDueDate}" />
+
+                            <f:facet name="footer">
+                                <p:commandButton value="Add task" update="form" actionListener="#{userBean.onAddNew}" class="waves-effect waves-light btn blue-grey lighten-3" oncomplete="completeAddingTask();"/>
+                            </f:facet>  
+                        </h:panelGrid>
+                    </p:dialog>
+
                 </div>
                 <div class="col s1 l1"><!--just some spacing--></div>
             </div>
         </h:form>
+
+        <script type="text/javascript">
+            function completeAddingTask() {
+                PF('dlg').hide();
+                location.reload();
+            }
+        </script>
+
     </ui:define>
     <ui:define name="bottom">
         <!--footer-->

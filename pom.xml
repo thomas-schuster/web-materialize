@@ -58,6 +58,11 @@
         </dependency>
         <!-- further dependencies -->
         <dependency>
+            <groupId>de.hspf.sysdev</groupId>
+            <artifactId>basetheme</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>6.2</version>

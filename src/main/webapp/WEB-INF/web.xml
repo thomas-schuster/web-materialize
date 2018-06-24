@@ -14,6 +14,10 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Production</param-value>
     </context-param>
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>basetheme</param-value>
+    </context-param>
     
     <!-- JSF front servlet configuration -->
     <servlet>

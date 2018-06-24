@@ -1,7 +1,7 @@
 package de.hspf.sysdev.web.materialize.view.util;
 
 import de.hspf.sysdev.web.materialize.model.Task;
-import de.hspf.sysdev.web.materialize.model.Task.TaskType;
+import de.hspf.sysdev.web.materialize.model.TaskType;
 import de.hspf.sysdev.web.materialize.model.User;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,9 +35,9 @@ public class CreatorUtil {
         user.setUserName(name);
         user.setPassword(password);
 
-        Task task1 = createTask("Eine einfache Aufgabe", TaskType.Epic, 12);
-        Task task2 = createTask("Eine schwierige Aufgabe", TaskType.Task, 8);
-        Task task3 = createTask("Donald etwas Vernunft beibringen", TaskType.SubTask, 2);
+        Task task1 = createTask("Eine einfache Aufgabe", TaskType.EPIC, 12);
+        Task task2 = createTask("Eine schwierige Aufgabe", TaskType.TASK, 8);
+        Task task3 = createTask("Donald etwas Vernunft beibringen", TaskType.SUBTASK, 2);
         Collection<Task> tasks = new ArrayList<>();
         tasks.add(task1);
         tasks.add(task2);

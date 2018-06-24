@@ -8,6 +8,7 @@ package de.hspf.sysdev.web.materialize.logic;
 import de.hspf.sysdev.web.materialize.logic.dao.TaskFacade;
 import de.hspf.sysdev.web.materialize.logic.dao.UserFacade;
 import de.hspf.sysdev.web.materialize.model.Task;
+import de.hspf.sysdev.web.materialize.model.TaskType;
 import de.hspf.sysdev.web.materialize.model.User;
 import de.hspf.sysdev.web.materialize.view.util.CreatorUtil;
 import java.util.Collection;
@@ -18,7 +19,6 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -121,7 +121,7 @@ public class UserController {
      * @param due - date when task is due
      * @param type - type of task
      */
-    public void createUserTask(User user, String name, Date due, Task.TaskType type) {
+    public void createUserTask(User user, String name, Date due, TaskType type) {
         Task userTask = util.createTask(name, type, due);
         taskManager.edit(userTask);
         user.getTaskList().add(userTask);

@@ -20,11 +20,7 @@ public class Task {
     private Date dueDate;
     private TaskType type;
 
-    public enum TaskType {
-        Epic, UserStory, SubTask, Task
-    }
-
-    public Long getTaskId() {
+        public Long getTaskId() {
         return taskId;
     }
 
