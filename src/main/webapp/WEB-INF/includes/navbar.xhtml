@@ -17,12 +17,12 @@
                     <li><a href="https://javaee.github.io/javaserverfaces-spec/">Java ServerFaces</a></li>
                     <li><a href="https://www.primefaces.org/showcase/">PrimeFaces ShowCase</a></li>
                     <li>
-                        <h:commandLink rendered="#{loginBean.loggedIn}" action="login" class="waves-effect waves-light btn blue-grey lighten-3">
+                        <h:commandLink rendered="#{loginBean.loggedIn}" action="#{loginBean.logout()}" class="waves-effect waves-light btn blue-grey lighten-3">
                             <i class="material-icons left">person</i><h:outputText value="#{loginBean.userName}"/>
                         </h:commandLink>
                     </li>
                     <li>
-                        <h:commandLink rendered="#{!loginBean.loggedIn}" action="login" class="waves-effect waves-light btn blue-grey lighten-3">
+                        <h:commandLink id="loginLink" rendered="#{!loginBean.loggedIn}" action="login" class="waves-effect waves-light btn blue-grey lighten-3">
                             <i class="material-icons left">person_outline</i><h:outputText value="#{MSG.LOGIN}"/>
                         </h:commandLink>
                     </li>
@@ -33,7 +33,7 @@
                     <li><a href="https://javaee.github.io/javaserverfaces-spec/">Java ServerFaces</a></li>
                     <li><a href="https://www.primefaces.org/showcase/">PrimeFaces ShowCase</a></li>
                     <li>
-                        <h:commandLink rendered="#{loginBean.loggedIn}" action="login" class="waves-effect waves-light btn blue-grey lighten-3">
+                        <h:commandLink rendered="#{loginBean.loggedIn}" action="#{loginBean.logout()}" class="waves-effect waves-light btn blue-grey lighten-3">
                             <i class="material-icons left">person</i><h:outputText value="#{loginBean.userName}"/>
                         </h:commandLink>
                     </li>
@@ -46,7 +46,7 @@
             </h:form>
         </div>
     </nav>
-    
+
     <!--Script to call mobile navbar-->
     <script>
         $(document).ready(function () {

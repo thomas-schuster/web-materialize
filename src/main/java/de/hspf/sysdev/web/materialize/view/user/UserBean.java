@@ -1,13 +1,13 @@
 package de.hspf.sysdev.web.materialize.view.user;
 
 import de.hspf.sysdev.web.materialize.logic.UserController;
+import de.hspf.sysdev.web.materialize.logic.dao.TaskFacade;
 import de.hspf.sysdev.web.materialize.model.Task;
 import de.hspf.sysdev.web.materialize.model.TaskType;
 import de.hspf.sysdev.web.materialize.model.User;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -26,9 +26,13 @@ import org.primefaces.event.RowEditEvent;
 public class UserBean implements Serializable {
 
     private static final Logger logger = LogManager.getLogger(UserBean.class);
+    private static final long serialVersionUID = 5579167733981803372L;
+    
     
     @EJB
     private UserController userService;
+    @EJB
+    private TaskFacade taskService;
     
     private User user;
     private String newTaskName;
@@ -37,7 +41,31 @@ public class UserBean implements Serializable {
     
     public UserBean() {
     }
+  
+    public void editTask(RowEditEvent event) {
+        logger.debug("task has been edited");
+        Task editedTask = (Task) event.getObject();
+        logger.debug("task due date is: " + editedTask.getDueDate());
+        taskService.edit(editedTask);
+        logger.debug("task has been saved");
+        FacesMessage msg = new FacesMessage("Task Edited", editedTask.getTaskName());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
+    public void cancelTaskEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Task Edit Cancelled", ((Task) event.getObject()).getTaskName());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void addTask() {
+        logger.info("initiated to add a new task");
+        //add a new task to the current users tasklist
+        userService.createUserTask(user, newTaskName, newDueDate, newTaskType);
+        logger.info("added new task");
+        FacesMessage msg = new FacesMessage("New task added");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
     public User getUser() {
         return user;
     }
@@ -47,11 +75,11 @@ public class UserBean implements Serializable {
     }
 
     public String getUserName() {
-        return user.getUserName();
+        return user != null ? user.getUserName() : null;
     }
 
     public Collection<Task> getUserTasks() {
-        return user.getTaskList();
+        return user != null ? user.getTaskList() : null; 
     }
 
     public String getNewTaskName() {
@@ -80,25 +108,6 @@ public class UserBean implements Serializable {
     
     public TaskType[] getTypes() {
         return TaskType.values();
-    }
-    
-    public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Task Edited", ((Task) event.getObject()).getTaskName());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Task) event.getObject()).getTaskName());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-
-    public void onAddNew() {
-        logger.info("initiated to add a new task");
-        //add a new task to the current users tasklist
-        userService.createUserTask(user, newTaskName, newDueDate, newTaskType);
-        logger.info("added new task");
-        FacesMessage msg = new FacesMessage("New task added");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
 }

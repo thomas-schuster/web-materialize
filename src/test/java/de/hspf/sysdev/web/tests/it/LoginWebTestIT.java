@@ -33,7 +33,8 @@ public class LoginWebTestIT {
         // Notice that the configuration is made by an external dependency (not selenium itself)
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        baseUrl = "https://google.de";
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @After
@@ -48,13 +49,13 @@ public class LoginWebTestIT {
     @Test
     public void testUntitledTestCase() throws Exception {
         driver.get("http://localhost:50193/web-materialize");
-        driver.findElement(By.linkText("person_outlineLogin")).click();
+        driver.findElement(By.id("navBar:loginLink")).click();
         driver.findElement(By.id("loginForm:username")).click();
         driver.findElement(By.id("loginForm:username")).clear();
         driver.findElement(By.id("loginForm:username")).sendKeys("thomas");
         driver.findElement(By.id("loginForm:password")).clear();
         driver.findElement(By.id("loginForm:password")).sendKeys("test");
-        driver.findElement(By.linkText("Sign Insend")).click();
+        driver.findElement(By.id("loginForm:loginLink")).click();
         try {
             assertEquals("thomas DashBoard", driver.findElement(By.xpath("//form[@id='form']/div/div[2]/h1")).getText());
         } catch (Error e) {

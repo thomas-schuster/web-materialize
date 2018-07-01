@@ -39,9 +39,15 @@ public class UserFacade extends AbstractFacade<User> {
      * @param userName - user to search for
      * @return user object, if a user was found
      */
-    public User findByName(@NotNull String userName) {
+    public User findByName(String userName) {
         logger.debug("searching user: " + userName);
-        TypedQuery<User> query = em.createNamedQuery("User.findByName", User.class);
+        
+        return getSingleResult(userName, "User.findByName", User.class);
+    }
+
+    
+    private User getSingleResult(String userName, String namedQuery, Class T) {
+        TypedQuery<User> query = em.createNamedQuery(namedQuery, T);
         query.setParameter("name", userName);
         try {
             return query.getSingleResult();

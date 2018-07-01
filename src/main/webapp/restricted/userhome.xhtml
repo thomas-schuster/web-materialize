@@ -22,10 +22,10 @@
 
                     <h1><h:outputText value="#{userBean.userName}" /> DashBoard</h1>
 
-                    <p:dataTable id="tasks" widgetVar="tasks" var="task" value="#{userBean.userTasks}" rowHover="true" tableStyleClass="striped">
+                    <p:dataTable id="tasks" widgetVar="tasks" var="task" value="#{userBean.userTasks}" rowHover="true" editable="true" tableStyleClass="striped">
                         <p:autoUpdate/>
-                        <p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" update=":form:msgs" />
-                        <p:ajax event="rowEditCancel" listener="#{userBean.onRowCancel}" update=":form:msgs" />
+                        <p:ajax event="rowEdit" listener="#{userBean.editTask}" update=":form:msgs" />
+                        <p:ajax event="rowEditCancel" listener="#{userBean.cancelTaskEdit}" update=":form:msgs" />
 
                         <p:column headerText="Id" sortBy="#{task.taskId}" style="border-bottom: 1px solid #ddd; padding-top: 1em;padding-bottom: 1em;">
                             <p:cellEditor>
@@ -48,8 +48,8 @@
                         </p:column>
                         <p:column headerText="Due Date" sortBy="#{task.dueDate}" style="border-bottom: 1px solid #ddd;">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{task.dueDate}" /></f:facet>
-                                <f:facet name="input"><p:inputText value="#{task.dueDate}" style="width:100%" label="Due Date"/></f:facet>
+                                <f:facet name="output"><h:outputText value="#{task.dueDate}"><f:convertDateTime pattern="dd.MM.yyyy" timeZone="Europe/Berlin"/></h:outputText></f:facet>
+                                <f:facet name="input"><p:calendar id="popup" value="#{task.dueDate}" pattern="dd.MM.yyyy" timeZone="Europe/Berlin" /></f:facet>
                             </p:cellEditor>
                         </p:column>
 
@@ -75,10 +75,10 @@
                             </p:selectOneMenu>
 
                             <p:outputLabel for="popup" value="Due date:" />
-                            <p:calendar id="popup" value="#{userBean.newDueDate}" />
+                            <p:calendar id="popup" value="#{userBean.newDueDate}" pattern="dd.MM.yyyy" timeZone="Europe/Berlin"/>
 
                             <f:facet name="footer">
-                                <p:commandButton value="Add task" update="form" actionListener="#{userBean.onAddNew}" class="waves-effect waves-light btn blue-grey lighten-3" oncomplete="completeAddingTask();"/>
+                                <p:commandButton value="Add task" update="form" actionListener="#{userBean.addTask}" class="waves-effect waves-light btn blue-grey lighten-3" oncomplete="completeAddingTask();"/>
                             </f:facet>  
                         </h:panelGrid>
                     </p:dialog>

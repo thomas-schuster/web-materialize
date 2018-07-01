@@ -18,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 public class RegistrationBean implements Serializable {
 
     private static final Logger logger = LogManager.getLogger(RegistrationBean.class);
+    private static final long serialVersionUID = 5698088241579720720L;
     
     @EJB
     private UserController controller;

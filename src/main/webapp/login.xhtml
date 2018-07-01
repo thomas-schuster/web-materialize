@@ -35,7 +35,7 @@
                                             <h:outputLabel for="password" value ="#{MSG.PASSWORD}"/>
                                         </div>
                                         <div class="row s12 m6 input-field">
-                                            <h:commandLink value="#{MSG.SIGNIN}" styleClass="btn btn-large blue-grey lighten-3" 
+                                            <h:commandLink id="loginLink" value="#{MSG.SIGNIN}" styleClass="btn btn-large blue-grey lighten-3" 
                                                            action="#{loginBean.authenticate()}"><i class="material-icons right">send</i></h:commandLink>
                                         </div>                                       
                                     </h:form>
