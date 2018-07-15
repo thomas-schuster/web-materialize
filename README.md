@@ -18,8 +18,9 @@ The example serves as a minimum example. To limit the scope to the essentials, t
 The project is configured to be built and deployed by means of common maven goals. More convenience may be reached by using an IDE such as NetBeans, IntelliJ oder eclipse. 
 
 1. In order to enable a quick build and installation, tests may be skipped during **clean**, **install** and **package** commands. 
-2. The project is ready to be executed on [Payara 182](https://www.payara.fish/)
-3. You will also need to install the basic theme which is included as *basetheme.jar*. You simply have to install it to your maven repository. Todo so, just cd to your project folder and then execute the following command:
+2. The project is ready to be executed on [Payara 182](https://www.payara.fish/).
+3. For the first application start, create an empty derby database called material.
+4. You will also need to install the basic theme which is included as *basetheme.jar*. You simply have to install it to your maven repository. Todo so, just cd to your project folder and then execute the following command:
 ```console
 foo@bar:~$ mvn install:install-file -Dfile=basetheme.jar -DgroupId=de.hspf.sysdev \ 
            -DartifactId=basetheme -Dversion=1.0 -Dpackaging=jar 
